@@ -1,0 +1,17 @@
+{
+  "name": "webpack-task-1",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Webpack production build with jQuery and Lodash",
+  "scripts": {
+    "build": "webpack --mode production"
+  },
+  "devDependencies": {
+    "webpack": "^4.47.0",
+    "webpack-cli": "^3.3.12"
+  },
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "lodash": "^4.17.21"
+  }
+}
