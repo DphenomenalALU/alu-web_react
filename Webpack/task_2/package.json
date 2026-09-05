@@ -4,7 +4,7 @@
   "private": true,
   "description": "Webpack production build with CSS and optimized images",
   "scripts": {
-    "build": "webpack --mode production"
+    "build": "webpack"
   },
   "devDependencies": {
     "css-loader": "^3.6.0",

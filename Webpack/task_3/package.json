@@ -4,7 +4,7 @@
   "private": true,
   "description": "Webpack development server with split modules",
   "scripts": {
-    "build": "webpack --mode development",
+    "build": "webpack",
     "start-dev": "webpack-dev-server --open"
   },
   "devDependencies": {

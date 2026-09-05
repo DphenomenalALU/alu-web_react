@@ -4,7 +4,7 @@
   "private": true,
   "description": "Webpack production build with jQuery and Lodash",
   "scripts": {
-    "build": "webpack --mode production"
+    "build": "webpack"
   },
   "devDependencies": {
     "webpack": "^4.47.0",
