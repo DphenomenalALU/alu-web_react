@@ -16,4 +16,4 @@ $('body').append('<button id="button">Click here to get started</button>');
 $('body').append('<p id="count"></p>');
 $('body').append('<p>Copyright - Holberton School</p>');
 
-$('#button').on('click', _.debounce(updateCounter, 300));
+$('#button').on('click', _.debounce(updateCounter, 500));

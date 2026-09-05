@@ -13,4 +13,4 @@ $('body').append('<p>Dashboard data for the students</p>');
 $('body').append('<button id="button">Click here to get started</button>');
 $('body').append('<p id="count"></p>');
 
-$('#button').on('click', _.debounce(updateCounter, 300));
+$('#button').on('click', _.debounce(updateCounter, 500));
