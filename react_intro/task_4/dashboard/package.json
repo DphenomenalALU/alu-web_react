@@ -1,0 +1,25 @@
+{
+  "name": "react-intro-task-4",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://dphenomenalalu.github.io/alu-web_react",
+  "dependencies": {
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.7",
+    "gh-pages": "^2.2.0",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "^3.4.1"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --watchAll=false",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "browserslist": {
+    "production": [">0.2%", "not dead", "not op_mini all"],
+    "development": ["last 1 chrome version", "last 1 firefox version", "last 1 safari version"]
+  }
+}
