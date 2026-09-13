@@ -1,0 +1,17 @@
+#CourseList {
+  border-collapse: collapse;
+  color: #222;
+  margin: 24px;
+  width: calc(100% - 48px);
+}
+
+#CourseList th,
+#CourseList td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+#CourseList th {
+  background: #f4f4f4;
+}
