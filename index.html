@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>School dashboard</title>
+    <style>
+      :root {
+        --holberton-red: #e0344b;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        color: #222;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+      }
+
+      .notifications {
+        border: 1px solid var(--holberton-red);
+        margin: 24px;
+        padding: 12px;
+      }
+
+      .notifications button {
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        float: right;
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .notifications ul {
+        line-height: 1.5;
+      }
+
+      .notifications [data-priority="default"] {
+        color: blue;
+      }
+
+      .notifications [data-priority="urgent"] {
+        color: red;
+      }
+
+      .dashboard {
+        color: var(--holberton-red);
+        min-height: 100vh;
+      }
+
+      .dashboard-header {
+        align-items: center;
+        border-bottom: 3px solid var(--holberton-red);
+        display: flex;
+        padding: 16px 24px;
+      }
+
+      .dashboard-logo {
+        height: 160px;
+        object-fit: contain;
+        width: 160px;
+      }
+
+      .dashboard-header h1 {
+        font-size: 32px;
+        margin-left: 16px;
+      }
+
+      .dashboard-body {
+        color: #222;
+        min-height: 300px;
+        padding: 48px 24px;
+      }
+
+      .dashboard-body label,
+      .dashboard-body input,
+      .dashboard-body button {
+        margin: 8px;
+      }
+
+      .dashboard-footer {
+        border-top: 3px solid var(--holberton-red);
+        color: var(--holberton-red);
+        font-style: italic;
+        padding: 20px 24px;
+        text-align: center;
+      }
+
+      @media (max-width: 600px) {
+        .dashboard-header {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .dashboard-header h1 {
+          margin-left: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="notifications" id="notifications">
+      <button type="button" aria-label="Close" id="close-notifications">×</button>
+      <p>Here is the list of notifications</p>
+      <ul>
+        <li data-priority="default">New course available</li>
+        <li data-priority="urgent">New resume available</li>
+        <li data-priority="urgent"><strong>Urgent requirement</strong> - complete by EOD</li>
+      </ul>
+    </div>
+
+    <div class="dashboard">
+      <header class="dashboard-header">
+        <img
+          class="dashboard-logo"
+          src="https://raw.githubusercontent.com/DphenomenalALU/alu-web_react/main/react_intro/task_4/dashboard/src/react-intro-project-holberton-logo.jpg"
+          alt="Holberton logo"
+        />
+        <h1>School dashboard</h1>
+      </header>
+      <main class="dashboard-body">
+        <p>Login to access the full dashboard</p>
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="email" />
+        <label for="password">Password:</label>
+        <input id="password" type="password" name="password" />
+        <button type="button">OK</button>
+      </main>
+      <footer class="dashboard-footer">
+        <p id="copyright"></p>
+      </footer>
+    </div>
+
+    <script>
+      document.getElementById('copyright').textContent =
+        'Copyright ' + new Date().getFullYear() + ' - Holberton School';
+      document.getElementById('close-notifications').addEventListener('click', function () {
+        console.log('Close button has been clicked');
+        document.getElementById('notifications').hidden = true;
+      });
+    </script>
+  </body>
+</html>
