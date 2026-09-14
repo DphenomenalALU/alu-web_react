@@ -53,6 +53,41 @@ describe('Notifications with a list', () => {
       shallow(<Notifications displayDrawer listNotifications={notifications} />).text(),
     ).toContain('Here is the list of notifications');
   });
+
+  test('does not rerender when the next list has the same length', () => {
+    const wrapper = shallow(
+      <Notifications displayDrawer listNotifications={notifications} />,
+    );
+    const renderSpy = jest.spyOn(Notifications.prototype, 'render');
+
+    renderSpy.mockClear();
+    try {
+      wrapper.setProps({ listNotifications: [...notifications] });
+      expect(renderSpy).not.toHaveBeenCalled();
+    } finally {
+      renderSpy.mockRestore();
+    }
+  });
+
+  test('rerenders when the next list is longer', () => {
+    const wrapper = shallow(
+      <Notifications displayDrawer listNotifications={notifications} />,
+    );
+    const renderSpy = jest.spyOn(Notifications.prototype, 'render');
+
+    renderSpy.mockClear();
+    try {
+      wrapper.setProps({
+        listNotifications: [
+          ...notifications,
+          { id: 4, type: 'default', value: 'New project available' },
+        ],
+      });
+      expect(renderSpy).toHaveBeenCalledTimes(1);
+    } finally {
+      renderSpy.mockRestore();
+    }
+  });
 });
 
 test('markAsRead logs the notification id', () => {
