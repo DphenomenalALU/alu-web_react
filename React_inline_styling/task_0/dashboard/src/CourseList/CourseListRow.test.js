@@ -1,0 +1,49 @@
+import React from 'react';
+import { shallow } from 'enzyme';
+import CourseListRow from './CourseListRow';
+
+describe('CourseListRow headers', () => {
+  test('renders one cell spanning two columns without a second value', () => {
+    const wrapper = shallow(<CourseListRow isHeader textFirstCell="Available courses" />);
+
+    expect(wrapper.find('th')).toHaveLength(1);
+    expect(wrapper.find('th').prop('colSpan')).toBe(2);
+  });
+
+  test('renders two header cells with a second value', () => {
+    const wrapper = shallow(
+      <CourseListRow isHeader textFirstCell="Course name" textSecondCell="Credit" />,
+    );
+
+    expect(wrapper.find('th')).toHaveLength(2);
+  });
+});
+
+test('renders two data cells in a table row', () => {
+  const wrapper = shallow(
+    <CourseListRow textFirstCell="ES6" textSecondCell="60" />,
+  );
+
+  expect(wrapper.find('tr')).toHaveLength(1);
+  expect(wrapper.find('td')).toHaveLength(2);
+});
+
+test('applies the default row background color', () => {
+  const wrapper = shallow(
+    <CourseListRow textFirstCell="ES6" textSecondCell="60" />,
+  );
+
+  expect(wrapper.find('tr').prop('style')).toEqual({
+    backgroundColor: '#f5f5f5ab',
+  });
+});
+
+test('applies the header row background color', () => {
+  const wrapper = shallow(
+    <CourseListRow isHeader textFirstCell="Available courses" />,
+  );
+
+  expect(wrapper.find('tr').prop('style')).toEqual({
+    backgroundColor: '#deb5b545',
+  });
+});

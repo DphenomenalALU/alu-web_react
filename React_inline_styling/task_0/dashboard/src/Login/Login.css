@@ -1,0 +1,11 @@
+.App-body {
+  color: #222;
+  min-height: 300px;
+  padding: 48px 24px;
+}
+
+.App-body label,
+.App-body input,
+.App-body button {
+  margin: 8px;
+}
