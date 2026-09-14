@@ -1,0 +1,14 @@
+.menuItem {
+  border-bottom: 1px solid #e0344b;
+  color: #222;
+  cursor: pointer;
+  padding: 12px 24px;
+}
+
+.Notifications [data-notification-type='default'] {
+  color: blue;
+}
+
+.Notifications [data-notification-type='urgent'] {
+  color: red;
+}
