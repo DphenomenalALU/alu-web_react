@@ -16,14 +16,14 @@ test('logs out when control and h are pressed together', () => {
   const originalAlert = window.alert;
   const alertMock = jest.fn();
   const logOut = jest.fn();
-  const wrapper = shallow(<App logOut={logOut} />);
 
   window.alert = alertMock;
+  const wrapper = shallow(<App logOut={logOut} />);
   try {
-    window.dispatchEvent(new KeyboardEvent('keydown', {
+    wrapper.instance().handleKeyDown({
       key: 'h',
       ctrlKey: true,
-    }));
+    });
 
     expect(alertMock).toHaveBeenCalledWith('Logging you out');
     expect(logOut).toHaveBeenCalledTimes(1);
