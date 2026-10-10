@@ -31,7 +31,7 @@ function NotificationItem({ id, type, html, value, markAsRead }) {
 export default React.memo(NotificationItem);
 
 NotificationItem.propTypes = {
-  id: PropTypes.number,
+  id: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
   html: PropTypes.shape({
     __html: PropTypes.string.isRequired,
   }),
