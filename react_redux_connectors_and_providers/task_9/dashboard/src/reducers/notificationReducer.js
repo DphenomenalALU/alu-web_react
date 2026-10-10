@@ -3,6 +3,7 @@ import {
   FETCH_NOTIFICATIONS_SUCCESS,
   MARK_AS_READ,
   NotificationTypeFilters,
+  SET_LOADING_STATE,
   SET_TYPE_FILTER,
 } from '../actions/notificationActionTypes';
 import { notificationsNormalizer } from '../schema/notifications';
@@ -10,6 +11,7 @@ import { notificationsNormalizer } from '../schema/notifications';
 export const initialState = Map({
   notifications: Map(),
   filter: NotificationTypeFilters.DEFAULT,
+  loading: false,
 });
 
 export function notificationReducer(state = initialState, action = {}) {
@@ -23,12 +25,14 @@ export function notificationReducer(state = initialState, action = {}) {
         ),
         Map(),
       );
-      return state.set('notifications', notifications);
+      return state.mergeDeep(Map({ notifications }));
     }
     case MARK_AS_READ:
       return state.setIn(['notifications', String(action.index), 'isRead'], true);
     case SET_TYPE_FILTER:
       return state.set('filter', action.filter);
+    case SET_LOADING_STATE:
+      return state.set('loading', action.loading);
     default:
       return state;
   }
