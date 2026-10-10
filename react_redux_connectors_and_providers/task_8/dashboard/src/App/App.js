@@ -31,11 +31,11 @@ export class App extends React.Component {
 
   render() {
     const { displayDrawer, handleDisplayDrawer, handleHideDrawer, isLoggedIn,
-      listNotifications, login, user } = this.props;
+      login, user } = this.props;
     return (
       <div className={`App ${css(styles.app)}`}>
         <Notifications displayDrawer={displayDrawer} handleDisplayDrawer={handleDisplayDrawer}
-          handleHideDrawer={handleHideDrawer} listNotifications={listNotifications} />
+          handleHideDrawer={handleHideDrawer} />
         <Header user={user} />
         <main className={`App-body ${css(styles.body)}`}>
           {isLoggedIn ? (
