@@ -1,19 +1,15 @@
-export function filterTypeSelected(state) {
-  return state.get('filter');
-}
+import { createSelector } from 'reselect';
+import { NotificationTypeFilters } from '../actions/notificationActionTypes';
 
-export function getNotifications(state) {
-  return state.get('notifications');
-}
+export const filterTypeSelected = (state) => state.get('filter');
+export const getNotifications = (state) => state.get('notifications');
 
-export function getUnreadNotifications(state) {
-  return getNotifications(state).valueSeq()
-    .filter((notification) => notification.get('isRead') === false)
-    .toList();
-}
+export const getUnreadNotificationsByType = createSelector(
+  [filterTypeSelected, getNotifications],
+  (filter, notifications) => notifications.valueSeq()
+    .filter((notification) => !notification.get('isRead')
+      && (filter === NotificationTypeFilters.DEFAULT || notification.get('type') === filter.toLowerCase()))
+    .toList(),
+);
 
-export default {
-  filterTypeSelected,
-  getNotifications,
-  getUnreadNotifications,
-};
+export default { filterTypeSelected, getNotifications, getUnreadNotificationsByType };

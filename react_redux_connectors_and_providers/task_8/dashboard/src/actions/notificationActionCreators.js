@@ -1,5 +1,23 @@
 import { bindActionCreators } from 'redux';
-import { MARK_AS_READ, SET_TYPE_FILTER } from './notificationActionTypes';
+import { FETCH_NOTIFICATIONS_SUCCESS, MARK_AS_READ, SET_LOADING_STATE, SET_TYPE_FILTER } from './notificationActionTypes';
+
+export function setLoadingState(loading) {
+  return { type: SET_LOADING_STATE, loading };
+}
+
+export function setNotifications(data) {
+  return { type: FETCH_NOTIFICATIONS_SUCCESS, data };
+}
+
+export function fetchNotifications() {
+  return (dispatch) => {
+    dispatch(setLoadingState(true));
+    return fetch('/notifications.json')
+      .then((response) => response.json())
+      .then((data) => dispatch(setNotifications(data)))
+      .finally(() => dispatch(setLoadingState(false)));
+  };
+}
 
 export function markAsAread(index) {
   return {
